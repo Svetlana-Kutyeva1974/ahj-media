@@ -1,34 +1,77 @@
+html {
+  scrollbar-color: #33383b #b1b3b5; /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-width: thin; /* толщина */
+}
+
+body, html {
+  background-color: #173a50;
+  color: #b1b3b5;
+  font-family: PT Sans,Calibri,Helvetica,Arial,sans-serif;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1;
+}
+
 .chat-widget {
+
+  display: flex;
+  flex-direction: column;
+  /*main {
+    flex-direction: column;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 600px;
+    min-width: 300px;
+    padding: 20px;
+    position: relative;
+}*/
   position: fixed;
   bottom: 0;
-  right: 0;
+  top:0;
+  /*left: 50vmax;*/
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  max-height: 600px;
+  height: 100vh;
+  /*height: 100%;*/
+  flex-grow: 1;
 }
+
 .chat-widget__area {
-  display: none;
-  width: 300px;
-  height: 300px;
-  border: 2px solid green;
-  border-width: 1px 0 0 1px;
-  border-radius: 20px 0 0 0;
+ /* display: none;*/
+  display: flex;
+  margin: 0 auto;
+  /*height: 100%;*/
+  min-width: 300px;
+  /*max-width: 600px;*/
+  max-height: 600px;
+  height: 100vh;
+  /*border: 2px solid green;
+  border-width: 0;border-width: 1px 0 0 1px;*/
+  border-radius: 5px;/*10px*/
   background: #f0ffea;
   flex-direction: column;
-  padding: 20px 5px 0 5px;
+  padding: 40px 5px 5px 5px;/*20px 5px 0 5px;*/
   box-sizing: border-box;
+  
 }
 
+/*
 .chat-widget_active .chat-widget__side {
   display: none;
-}
-
+}*/
+/*
 .chat-widget_active .chat-widget__area {
   display: flex;
 }
-
+*/
 .chat-widget__messages-container {
   flex-grow: 1;
   overflow-y: auto;
 }
-
+/*
 .chat-widget__side {
   position: relative;
   width: 50px;
@@ -36,10 +79,11 @@
   background: red;
   border-radius: 20px 0 0 0;
 }
+*/
 
 
 .message {
-  margin-bottom: 10px;
+  margin-bottom: 20px;/*10px*/
   display: flex;
   align-items: center;
 }
@@ -78,6 +122,7 @@
 .chat-widget__input {
   border: 1px solid gray;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .chat-widget__side-text {
@@ -197,3 +242,25 @@ h1 {
   display: inline-block;
 }
 */
+
+footer {
+  min-height: 48px;
+  display: block;
+}
+
+.message__footer {
+  display: flex;
+  font-size: 20px;
+  /*background-color: #2a2f32;*/
+  /*border: 1px solid;*/
+  /*border-color: #2a2f32;*/
+  /*border-radius: 0 0 var(--main-border-radius) var(--main-border-radius);*/
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.upload__file {
+  position: relative;
+}

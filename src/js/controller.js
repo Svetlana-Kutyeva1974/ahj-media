@@ -45,6 +45,7 @@ export default class Controller {
   }
 
   init() {
+    // обработка ввода текста
     const onKey = (e) => {
     // console.log(e.key, e.code);
       if (e.code === 'Enter') {
