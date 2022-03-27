@@ -145,6 +145,10 @@ body, html {
   border: 1px solid gray;
   padding: 10px;
   border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .chat-widget__side-text {
@@ -281,6 +285,7 @@ footer {
   flex-wrap: nowrap;
   flex-direction: row;
   justify-content: space-between;
+  flex-grow: 1;
 }
 
 .upload__file {
