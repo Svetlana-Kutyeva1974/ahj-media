@@ -12,6 +12,7 @@ body, html {
   background-color: #0288db;/* #173a50;общий фон. фона*/
   color: #b1b3b5;
   font-family: PT Sans,Calibri,Helvetica,Arial,sans-serif;
+  font-weight: bold;
   height: 100%;
   overflow: hidden;
   width: 100%;
@@ -80,6 +81,7 @@ body, html {
   background-image: url(../img/1612866442_7-p-foni-dlya-chatov-telegram-7.jpg);
   background-position: center center;
   background-size: cover;
+  
   /*height: 100%;*/
   min-width: 300px;
   /*max-width: 600px;*/
@@ -92,7 +94,8 @@ body, html {
   flex-direction: column;
   /*padding: 40px 5px 5px 5px;/*20px 5px 0 5px;*/
   box-sizing: border-box;
-  
+  z-index: 3;
+  opacity: 0.9;
 }
 
 /*
@@ -107,16 +110,9 @@ body, html {
 .chat-widget__messages-container {
   flex-grow: 1;
   overflow-y: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
-/*
-.chat-widget__side {
-  position: relative;
-  width: 50px;
-  height: 250px;
-  background: red;
-  border-radius: 20px 0 0 0;
-}
-*/
 
 
 .message {
@@ -136,11 +132,11 @@ body, html {
 
 .message__time {
   margin-right: 5px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .message_client .message__time {
   order: 2;
-  margin-right: 0;;
+  /*margin-right: 0;*/
   margin-left: 5px;
 }
 .message__text {
@@ -151,6 +147,9 @@ body, html {
   background-color: #184d6b;
   color: inherit; /*rgb(31, 29, 29);/*cmc текст*/
   border-radius: 4px;
+  margin-left: 5px;
+  max-width: 65%;
+  word-wrap: break-word;
 }
 
 .message_client .message__text {
@@ -167,11 +166,12 @@ body, html {
   margin-right: 2%;
   background-color: #184d6b;
   color: inherit;
+  font-weight: bold;
 }
 
+/*
 .chat-widget__side-text {
   font-family: Arial;
-  /*color: #fff;*/
   transform: rotate(-90deg);
   position: absolute;
   top: 100px;
@@ -183,8 +183,9 @@ body, html {
   box-sizing: border-box;
   letter-spacing: 1px;
   font-size: 13px;
+  font-weight: bold;
 }
-
+*/
 /*
 html {
   font-size: 14px;
@@ -258,40 +259,9 @@ h1 {
   margin: 5px 0;
 }
 
-.addt {
-  text-align: right;
-  margin-left: 80%;
-  border-radius: .3rem;
-  height: 35px;
-  margin-bottom: 20px;
-}
-
-.button {
-  border-radius: .3rem;
-  
-}
-
-.status {
-  border: 2px solid #000;
-  border-radius: 50%;
-  height: 40px;
-  left: 15px;
-  position: absolute;
-  top: 15px;
-  width: 40px;
-  
-}
-
-.descript {
-  display: inline-block;
-}
 */
 header {
   width: 100%;
-}
-
-.message__header {
-  display: block;
 }
 
 footer, header {
@@ -300,6 +270,7 @@ footer, header {
   background-color: #184d6b;
   border-radius: 5px;
 }
+
 .footer, .header {
   width: 100%;
 }
@@ -327,7 +298,6 @@ footer, header {
   border: none;
   font: inherit;
   color: inherit;
-  
 }
 
 .buttonAsk {
@@ -358,16 +328,13 @@ footer, header {
 }
 
 .avatar {
-    /* display: none;*/
      display: flex;
      margin: 0 auto;
      background-image: url(../img/testimonials-img.jpg);
      background-position: center center;
      background-size: cover;
      border-radius: 50%;
-     /*height: 100%;*/
      width: 24px;
-     /*max-width: 600px;*/
      height: 24px;
      margin-left: 2%;
 }

@@ -17,18 +17,21 @@ export default class UserInterface {
             <div class="message__header">
         
             <div class="avatar">
-            <!--<button class="button clip">
-            <span>
-            </span>
-            </button>-->
             </div>
-            
-            <input id="chat-widget__input" class="chat-widget__input" placeholder="Введите ваше сообщение">
-            <!--<input class="input-field" id="ask" placeholder="Введите сообщение">
-            <span class="visually-hidden">Поле ввода сообщения</span>-->
         
             <button class="button__nav" id="id__nav" aria-label="Кнопка nav">
               <span class="span__nav" data-type="dot__menu">
+
+
+              <div class="menu-upload options" data-name="options" style="top: 45px; right: 0px; width: 155px;">
+                <ul>
+                <li><button class="upload-item" data-type="geo">Геолокация</button></li>
+                <li><button class="upload-item" data-type="favorite">Избранное</button></li>
+                <li><button class="upload-item" data-type="submenu">Категории</button></li>
+                <li><button class="upload-item" data-type="delete">Удалить всё</button></li>
+                </ul>
+                </div>
+
                 
               </span>
             </button>

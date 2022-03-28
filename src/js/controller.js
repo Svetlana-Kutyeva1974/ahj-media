@@ -62,4 +62,6 @@ export default class Controller {
     };
     document.addEventListener('keydown', onKey);
   }
+  // кнопки
+  //
 }
