@@ -154,7 +154,7 @@ body, html {
 }
 
 .message_client .message__text {
-  background: red;
+  background: #184d6b;/* red;*/
 }
 
 .chat-widget__input {
@@ -294,17 +294,17 @@ header {
   display: block;
 }
 
-footer {
+footer, header {
   min-height: 48px;
   display: block;
   background-color: #184d6b;
   border-radius: 5px;
 }
-.footer {
+.footer, .header {
   width: 100%;
 }
 
-.message__footer {
+.message__footer, .message__header {
   width: 100%;
   height: 100%;
   display: flex;
@@ -341,4 +341,42 @@ footer {
 .upload__file {
   position: relative;
   padding: 2% 0% 2% 2%;
+}
+
+.button__nav {
+  padding: 0;
+  background-color: #184d6b;
+  background-image: url(../img/kripl48.png);
+  background-position: center center;
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  border: none;
+  font: inherit;
+  color: inherit;
+  margin-right: 2%;
+}
+
+.avatar {
+    /* display: none;*/
+     display: flex;
+     margin: 0 auto;
+     background-image: url(../img/testimonials-img.jpg);
+     background-position: center center;
+     background-size: cover;
+     border-radius: 50%;
+     /*height: 100%;*/
+     width: 24px;
+     /*max-width: 600px;*/
+     height: 24px;
+     margin-left: 2%;
+}
+
+.span__nav {
+  background-image: url(../img/kripl48.png);
+  background-position: center center;
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  margin-right: 2%;
 }

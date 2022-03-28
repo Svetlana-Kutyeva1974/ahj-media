@@ -47,17 +47,18 @@ export default class Controller {
   init() {
     // обработка ввода текста
     const onKey = (e) => {
-    // console.log(e.key, e.code);
+      console.log(e.key, e.code);
       if (e.code === 'Enter') {
         this.message += ' message_client';
         this.viewSms(this.message, this.item);
-        this.viewSms('message', Controller.getSmsRobot());
+        // this.viewSms('message', Controller.getSmsRobot());
         this.item = '';
         this.message = 'message';
         document.querySelector('.chat-widget__input').value = '';
         this.messages.lastElementChild.scrollIntoView(false);// в конец окна
+      } else {
+        this.item += `${e.key}`;
       }
-      this.item += `${e.key}`;
     };
     document.addEventListener('keydown', onKey);
   }

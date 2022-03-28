@@ -13,20 +13,29 @@ export default class UserInterface {
   static get markup() {
     return `
     <div class="chat-widget__area">
-    <header class="header">
+      <header class="header">
             <div class="message__header">
         
-            <button class="buttonAsk" id="askMe" aria-label="Кнопка отправки сообщения">
-              <span data-type="audio">
-                <svg viewBox="0 0 24 24" width="24" height="24" class="">
-                <path fill="currentColor" d="M11.999 14.942c2.001 0 3.531-1.53 3.531-3.531V4.35c0-2.001-1.53-3.531-3.531-3.531S8.469 2.35 8.469 4.35v7.061c0 2.001 1.53 3.531 3.53 3.531zm6.238-3.53c0 3.531-2.942 6.002-6.237 6.002s-6.237-2.471-6.237-6.002H3.761c0 4.001 3.178 7.297 7.061 7.885v3.884h2.354v-3.884c3.884-.588 7.061-3.884 7.061-7.885h-2z">
-                </path>
-                </svg>
+            <div class="avatar">
+            <!--<button class="button clip">
+            <span>
+            </span>
+            </button>-->
+            </div>
+            
+            <input id="chat-widget__input" class="chat-widget__input" placeholder="Введите ваше сообщение">
+            <!--<input class="input-field" id="ask" placeholder="Введите сообщение">
+            <span class="visually-hidden">Поле ввода сообщения</span>-->
+        
+            <button class="button__nav" id="id__nav" aria-label="Кнопка nav">
+              <span class="span__nav" data-type="dot__menu">
+                
               </span>
             </button>
             
             </div>
-            </header>
+          
+      </header>
 
             <div class="chat-widget__messages-container">
                 <div class="chat-widget__messages" id="chat-widget__messages">
