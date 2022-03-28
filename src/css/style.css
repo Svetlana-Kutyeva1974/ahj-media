@@ -8,6 +8,11 @@ html {
   padding: 0;
 }
 
+ol, ul{
+  list-style: none;
+  background-color: #184d6b;
+}
+
 body, html {
   background-color: #0288db;/* #173a50;общий фон. фона*/
   color: #b1b3b5;
@@ -236,9 +241,7 @@ h1 {
   height: 100%;
 }
 
-.hidden {
-  display: none;
-}
+
 
 .modal {
   box-sizing: border-box;
@@ -260,6 +263,9 @@ h1 {
 }
 
 */
+
+
+
 header {
   width: 100%;
 }
@@ -346,4 +352,54 @@ footer, header {
   width: 24px;
   height: 24px;
   margin-right: 2%;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 25%;
+  left: 26%;
+  margin: auto;
+  z-index: 1;
+  text-align: justify;
+  background-color: #184d6b;
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 45%;
+  height: 55%;
+  padding: 1%;
+}
+
+.modal_nav {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50px;
+  left: calc(55% - 2px);
+  margin: auto;
+  z-index: 1;
+  text-align: justify;
+  background-color: #184d6b;
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 20%;
+  height: 22%;
+  padding: 1%;
+}
+
+.menu-item {
+    background-color: #184d6b;
+    border: 1px solid #2a2f32;
+    border-radius: 5px;
+    color:inherit;/* #828689;*/
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 5px 5px;
+    text-align: left;
+    width: 100%;
+}
+
+.hidden {
+  display: none;
 }

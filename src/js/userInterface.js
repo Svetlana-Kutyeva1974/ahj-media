@@ -1,8 +1,6 @@
-/* eslint-disable class-methods-use-this */
 export default class UserInterface {
   constructor(parentEl) {
     this.parentEl = parentEl;
-    // this.title = 'Тематическая подсказка';
     this.storage = {
       // desk1: [],
       // desk2: [],
@@ -21,9 +19,9 @@ export default class UserInterface {
         
             <button class="button__nav" id="id__nav" aria-label="Кнопка nav">
               <span class="span__nav" data-type="dot__menu">
+              </span>
 
-
-              <div class="menu-upload options" data-name="options" style="top: 45px; right: 0px; width: 155px;">
+              <!--<div class="menu-upload options" data-name="options" style="top: 45px; right: 0px; width: 155px;">
                 <ul>
                 <li><button class="upload-item" data-type="geo">Геолокация</button></li>
                 <li><button class="upload-item" data-type="favorite">Избранное</button></li>
@@ -31,9 +29,9 @@ export default class UserInterface {
                 <li><button class="upload-item" data-type="delete">Удалить всё</button></li>
                 </ul>
                 </div>
+                -->
 
-                
-              </span>
+              
             </button>
             
             </div>
@@ -78,7 +76,37 @@ export default class UserInterface {
             </div>
             </footer>
 
-            <!--<input id="chat-widget__input" class="chat-widget__input" placeholder="Введите ваше сообщение">-->
+            
+            <div class="modal hidden">
+              <div class="modal-text">
+               <h4 class="modal-title">Что-то пошло не так</h4>
+                <p class="modal-message">К сожалению, нам не удалось определить ваше местоположение, пожалуйста, дайте разрешение на использование геолокации, либо введите координаты вручную.</p>
+              </div>
+
+            <div class="modale-input hidden">
+              <h4 class="modal-input-title">Широта и долгота через запятую</h4>
+              <input class="modal-input-text" placeholder="00.00, 00.00" required="">
+
+              <div class="modal-input-buttons">
+                <div class="input-error hidden">Неверный формат данных</div>
+                <button type="button" class="modal-cancel btn">Отмена</button>
+                <button type="button" class="modal-ok btn">ОК</button></div>
+              </div>
+            </div>
+
+            <div class="modal_nav hidden">
+            <!--<div class="menu-upload options" data-name="options" style="top: 45px; right: 0px; width: 155px;">-->
+              <ul>
+              <li><button class="menu-item" data-type="geo">Геолокация</button></li>
+              <li><button class="menu-item" data-type="geo">Видеозапись</button></li>
+              <!--<li><button class="menu-item" data-type="favorite">Избранное</button></li>-->
+              <li><button class="menu-item" data-type="submenu">Категории </button></li>
+              <li><button class="menu-item" data-type="delete">Удалить всё</button></li>
+              </ul>
+          
+            </div>
+
+
         </div>
     `;
   }

@@ -1,10 +1,10 @@
-import png from '../img/goblin.png';
+import png from '../img/location-pin.png';
 
 export default class Img {
   static create() {
     const imgEl = document.createElement('img');
     imgEl.src = png;
-    imgEl.alt = 'Текущее положение';
+    imgEl.alt = 'Загруженный файл';
     imgEl.classList.add('style-img');
     return imgEl;
   }
