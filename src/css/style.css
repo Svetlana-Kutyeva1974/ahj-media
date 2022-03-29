@@ -24,7 +24,7 @@ body, html {
   z-index: 1;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 763px) {
   #chat-id {
       position: relative;
       display: flex;
@@ -35,11 +35,11 @@ body, html {
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 763px) {
   #chat-id {
       position: relative;
       display: flex;
-      width: 600px;
+      width: 300px;/*было :600px*/
       height: 800px;
       margin: 10px auto 10px auto;
       flex-direction: column;
@@ -50,21 +50,6 @@ body, html {
 
   display: flex;
   flex-direction: column;
- 
-  /*main {
-    flex-direction: column;
-    height: 100%;
-    margin: 0 auto;
-    max-width: 600px;
-    min-width: 300px;
-    padding: 20px;
-    position: relative;
-
-    background-color: #6d6c69;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-}*/
   position: relative; /*position: fixed;*/
   bottom: 0;
   top:0;
@@ -85,7 +70,7 @@ body, html {
   background-image: url(../img/1612866442_7-p-foni-dlya-chatov-telegram-7.jpg);
   background-position: center center;
   background-size: cover;
-  width: 300px; /*min-width*/
+  width: 300px;/*было min-width: 300px;*/
   /*max-width: 600px;*/
   max-height: 600px;
   height: 99vh;
@@ -141,7 +126,7 @@ body, html {
   color: inherit; /*rgb(31, 29, 29);/*cmc текст*/
   border-radius: 4px;
   margin-left: 5px;
-  max-width: 65%;
+  max-width: 55%;
   word-wrap: break-word;
 }
 

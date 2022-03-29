@@ -48,19 +48,20 @@ export default class Controller {
 
   static onKeyChangeTag(tag1, tag2, isT) {
     console.log('имеем', tag1, tag2, isT);
-    if (isT === false) {
+    // if (isT === false) {
+    document.querySelector(tag2).classList.add('hidden');
+    document.querySelector(tag1).classList.remove('hidden');
+    /*
+  } else {
       document.querySelector(tag2).classList.add('hidden');
       document.querySelector(tag1).classList.remove('hidden');
-    }
-    if (isT === true) {
-      document.querySelector(tag2).classList.add('hidden');
-      document.querySelector(tag1).classList.remove('hidden');
-      /*
+      */
+    /*
       document.removeEventListener('input', () => {
         Controller.onKeyChangeTag('[data-type=text]', '[data-type=audio]', false);
       });
       */
-    }
+    // }
   }
 
   init() {
@@ -103,6 +104,7 @@ export default class Controller {
 
     document.addEventListener('click', (e) => {
       e.preventDefault();
+      // другое условие придумать
       if (!e.target.classList.contains('hidden') && !e.target.classList.contains('chat-widget__input')) {
         // вынести повтор в функцию
         this.message += ' message_client';
@@ -113,7 +115,7 @@ export default class Controller {
         document.querySelector('.chat-widget__input').value = '';
         this.messages.lastElementChild.scrollIntoView(false);// в конец окна
         Controller.onKeyChangeTag('[data-type=audio]', '[data-type=text]', true);
-      //
+      // остальные кнопки
       }
     });
   }
