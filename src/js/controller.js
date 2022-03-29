@@ -3,6 +3,8 @@ export default class Controller {
     this.chatWindows = chatWindows;// отрисованное окно чата
     this.messages = document.querySelector('.chat-widget__messages');
     this.view = document.querySelector('.chat-widget__messages-container');
+    this.buttonAsk = document.querySelector('.buttonAsk');
+    this.input = document.querySelector('#chat-widget__input');
     this.message = 'message';
     this.item = '';
   }
@@ -44,6 +46,23 @@ export default class Controller {
     `;
   }
 
+  static onKeyChangeTag(tag1, tag2, isT) {
+    console.log('имеем', tag1, tag2, isT);
+    if (isT === false) {
+      document.querySelector(tag2).classList.add('hidden');
+      document.querySelector(tag1).classList.remove('hidden');
+    }
+    if (isT === true) {
+      document.querySelector(tag2).classList.add('hidden');
+      document.querySelector(tag1).classList.remove('hidden');
+      /*
+      document.removeEventListener('input', () => {
+        Controller.onKeyChangeTag('[data-type=text]', '[data-type=audio]', false);
+      });
+      */
+    }
+  }
+
   init() {
     // обработка ввода текста
     const onKey = (e) => {
@@ -56,11 +75,47 @@ export default class Controller {
         this.message = 'message';
         document.querySelector('.chat-widget__input').value = '';
         this.messages.lastElementChild.scrollIntoView(false);// в конец окна
+        // Controller.onKeyChangeTag('[data-type=audio]', '[data-type=text]', true);
+        // отмена показа "отправить"
       } else {
         this.item += `${e.key}`;
       }
     };
+
+    /*
+    const onKeyChangeTag = (e, tag1, tag2) => {
+      console.log(e.key, e.code);
+      console.log('теги', tag1, tag2);
+      this.chatWindows.querySelector(tag1).classList.add('hidden');
+      this.chatWindows.querySelector(tag2).classList.remove('hidden');
+    };
+    */
+
+    document.addEventListener('input', () => {
+      Controller.onKeyChangeTag('[data-type=text]', '[data-type=audio]', false);
+    });
+
+    document.addEventListener('change', () => {
+      Controller.onKeyChangeTag('[data-type=audio]', '[data-type=text]', true);
+    });
+
     document.addEventListener('keydown', onKey);
+
+    document.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!e.target.classList.contains('hidden') && !e.target.classList.contains('chat-widget__input')) {
+        // вынести повтор в функцию
+        this.message += ' message_client';
+        this.viewSms(this.message, this.item);
+        // this.viewSms('message', Controller.getSmsRobot());
+        this.item = '';
+        this.message = 'message';
+        document.querySelector('.chat-widget__input').value = '';
+        this.messages.lastElementChild.scrollIntoView(false);// в конец окна
+        Controller.onKeyChangeTag('[data-type=audio]', '[data-type=text]', true);
+      //
+      }
+    });
   }
   // кнопки
   //

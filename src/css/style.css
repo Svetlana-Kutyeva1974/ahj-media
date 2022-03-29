@@ -400,6 +400,18 @@ footer, header {
     width: 100%;
 }
 
+.btn {
+  background-color: #184d6b;
+  color: inherit;
+}
+
+.modal-input-text{
+  background-color: #184d6b;
+  color: inherit;
+  font-size: inherit;
+  font-weight: bold;
+}
+
 .hidden {
   display: none;
 }
