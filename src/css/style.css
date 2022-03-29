@@ -66,18 +66,15 @@ body, html {
 
 .chat-widget__area {
   display: flex;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   background-image: url(../img/1612866442_7-p-foni-dlya-chatov-telegram-7.jpg);
   background-position: center center;
   background-size: cover;
-  width: 300px;/*было min-width: 300px;*/
+  /*width: 300px;*//*было min-width: 300px;*/
   /*max-width: 600px;*/
   max-height: 600px;
   height: 99vh;
-  /*border: 2px solid green;
-  border-width: 0;border-width: 1px 0 0 1px;*/
   border-radius: 5px;/*10px*/
-  /*background: #f0ffea;*/
   flex-direction: column;
   /*padding: 40px 5px 5px 5px;/*20px 5px 0 5px;*/
   box-sizing: border-box;
