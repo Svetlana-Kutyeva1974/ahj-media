@@ -10,6 +10,7 @@ export default class Controller {
     this.input = document.querySelector('#chat-widget__input');
     this.fileInput = document.querySelector('#fileElem');
     this.dropArea = document.querySelector('#drop-area');
+    this.dropbox = document.querySelector('#chat-id');
     this.formInput = document.querySelector('.my-form');
     this.fileLoad = document.querySelector('.button.button.clip');
     this.message = 'message';
@@ -75,6 +76,68 @@ export default class Controller {
     // отмена показа "отправить"
   }
 
+  handleFiles(files) {
+    console.log('файлc  массив', files);
+    /* c onst file = files[0]; */
+    /* const file = evt.target.files[0];
+    console.log("файл", file);
+    if(file !== undefined) {
+      let reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = function() {
+        console.log("reader rezult",reader.result);
+      };
+      reader.onerror = function() {
+        console.log("reader err",reader.error);
+      };
+      // const urls = URL.createObjectURL(reader.result);
+      const urls = URL.createObjectURL(file);
+      console.log("url файлов", urls);
+    */
+    // cmc отправить с файлом скринщота
+    let fl;
+    /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
+    for (let i = 0; i < files.length; i++) {
+      fl = files[i];
+      console.log('обработка файла ', i, 'имя файла ', fl.name);
+      const urlFile = URL.createObjectURL(fl);
+      const img = Img.create(urlFile, fl.name);
+      const exp = urlFile.slice(urlFile.length - 3);
+      console.log('create img', img);
+      console.log('расширение файла', exp);
+      console.log('размер файла', fl.size);
+      // this.viewSms("message message_client",fl.name,img.dataset.type);
+      this.viewSms('message message_client', fl.name, img);
+      console.log('url этого файла', urlFile);
+    }
+    this.dropArea.classList.add('hidden');
+  }
+
+  /* eslint class-methods-use-this: "error" */
+
+  /* eslint-env es6 */
+
+  dragenter(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(this);
+  }
+
+  dragover(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(this);
+  }
+
+  drop(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    // let dt = e.dataTransfer;
+    console.log('тянем потянем', e, e.dataTransfer);
+    // let dropFiles = dt.files;
+    this.handleFiles(e.dataTransfer.files);
+  }
+
   init() {
     // обработка ввода текста
     const onKey = (e) => {
@@ -120,38 +183,13 @@ export default class Controller {
       console.log('evt.target.files', [...evt.target.files]);
       const files = [...evt.target.files];
       console.log('файлc  массив', files);
-      /* c onst file = files[0]; */
-      /* const file = evt.target.files[0];
-      console.log("файл", file);
-      if(file !== undefined) {
-        let reader = new FileReader();
-        reader.readAsText(file);
-        reader.onload = function() {
-          console.log("reader rezult",reader.result);
-        };
-        reader.onerror = function() {
-          console.log("reader err",reader.error);
-        };
-        // const urls = URL.createObjectURL(reader.result);
-        const urls = URL.createObjectURL(file);
-        console.log("url файлов", urls);
-        */
-      // cmc отправить с файлом скринщота
-      let fl;
-      /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
-      for (let i = 0; i < files.length; i++) {
-        fl = files[i];
-        console.log('обработка файла ', i, 'имя файла ', fl.name);
-        const urlFile = URL.createObjectURL(fl);
-        const img = Img.create(urlFile, fl.name);
-        const exp = urlFile.slice(urlFile.length - 3);
-        console.log('create img', img);
-        console.log('расширение файла', exp);
-        // this.viewSms("message message_client",fl.name,img.dataset.type);
-        this.viewSms('message message_client', fl.name, img);
-        console.log('url этого файла', urlFile);
-      }
+      this.handleFiles(files);
+      // закрыть окно загрузки
       this.dropArea.classList.add('hidden');
     }); /* конец обработчика выбора */
+    // drag drop
+    this.dropbox.addEventListener('dragenter', this.dragenter.bind(this), false);
+    this.dropbox.addEventListener('dragover', this.dragover.bind(this), false);
+    this.dropbox.addEventListener('drop', this.drop.bind(this), false);
   } // init
 }
