@@ -123,8 +123,6 @@ export default class UserInterface {
               </ul>
           
             </div>
-
-
         </div>
     `;
   }
@@ -133,6 +131,3 @@ export default class UserInterface {
     this.parentEl.innerHTML = this.constructor.markup;
   }
 }
-
-
-//onchange="handleFiles(this.files)"

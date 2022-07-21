@@ -1,10 +1,10 @@
-import Img from "./imgCreate";
+import Img from './imgCreate.js';
 
 export default class Controller {
   constructor(chatWindows) {
     this.chatWindows = chatWindows;// отрисованное окно чата
-    this.messages = document.querySelector('.chat-widget__messages');// контейнер смс
-    this.view = document.querySelector('.chat-widget__messages-container');// надстройка над контейнер смс
+    this.messages = document.querySelector('.chat-widget__messages'); // контейнер смс
+    this.view = document.querySelector('.chat-widget__messages-container'); // надстройка над контейнер смс
     this.buttonAsk = document.querySelector('.buttonAsk');
     this.buttonFooter = document.querySelector('#Askme');
     this.input = document.querySelector('#chat-widget__input');
@@ -43,8 +43,8 @@ export default class Controller {
   }
 
   viewSms(message, item, img = '') {
-    const src = (img != '') ? img.src : ''; 
-    const classType = (img != '') ? 'message__img' : ''; 
+    const src = (img !== '') ? img.src : ' ';
+    const classType = (img !== '') ? 'message__img' : ' ';
     this.messages.innerHTML += `
     <div class="${message}">
       <div class="message__time">${Controller.getCurrentFormattedTime()}</div>
@@ -59,22 +59,20 @@ export default class Controller {
 
   static onKeyChangeTag(tag1, tag2, isT) {
     console.log('имеем', tag1, tag2, isT);
-    // if (isT === false) {
     document.querySelector(tag2).classList.add('hidden');
     document.querySelector(tag1).classList.remove('hidden');
   }
 
   postMessChat() {
     this.message += ' message_client';
-        this.viewSms(this.message, this.item);
-        // this.viewSms('message', Controller.getSmsRobot());
-        this.item = '';
-        this.message = 'message';
-        document.querySelector('.chat-widget__input').value = '';//было так, но с обрабоч на документ
-        //this.input.value = '';
-        this.messages.lastElementChild.scrollIntoView(false);// в конец окна
-        // Controller.onKeyChangeTag('[data-type=audio]', '[data-type=text]', true);
-        // отмена показа "отправить"
+    this.viewSms(this.message, this.item);
+    this.item = '';
+    this.message = 'message';
+    document.querySelector('.chat-widget__input').value = ''; // было так, но с обрабоч на документ
+    // this.input.value = '';
+    this.messages.lastElementChild.scrollIntoView(false); // в конец окна
+    // Controller.onKeyChangeTag('[data-type=audio]', '[data-type=text]', true);
+    // отмена показа "отправить"
   }
 
   init() {
@@ -87,121 +85,73 @@ export default class Controller {
         this.item += `${e.key}`;
       }
     };
-    
-    //document.addEventListener('input', () => {
+    // document.addEventListener('input', () => {
     this.input.addEventListener('input', () => {
       Controller.onKeyChangeTag('[data-type=text]', '[data-type=audio]', false);
     });
 
-    //this.input.addEventListener('change', () => {
+    // this.input.addEventListener('change', () => {
     document.addEventListener('change', () => {
       Controller.onKeyChangeTag('[data-type=audio]', '[data-type=text]', true);
     });
 
     document.addEventListener('keydown', onKey);
-    //this.input.addEventListener('keydown', onKey);
-
+    // this.input.addEventListener('keydown', onKey);
     this.input.addEventListener('change', (e) => {
-    //this.buttonAsk.addEventListener('click', (e) => {
-    //document.addEventListener('click', (e) => { 
-      //e.preventDefault();
-      //e.stopPropagation();
-      // другое условие придумать
-      console.log("e.target куда клик", e.target);
-      //if (e.target.closest('div').classList.contains('message__footer') ) {
+      console.log('e.target куда клик', e.target);
+      // if (e.target.closest('div').classList.contains('message__footer') ) {
       if (!e.target.classList.contains('hidden')) {
-
-      //if (!e.target.classList.contains('hidden') && !e.target.classList.contains('chat-widget__input')) {
-        //if (!e.target.classList.contains('hidden') && !e.target.classList.contains('chat-widget__input') 
-        //|| e.target !== "input#fileElem") {
-
-      //if (!e.target.classList.contains('chat-widget__input')) {
-  
-      // вынести повтор в функцию this.postMessChat
         this.postMessChat();
         Controller.onKeyChangeTag('[data-type=audio]', '[data-type=text]', true);
-      // остальные кнопки
-
-      // загрузка файлов была
-        
-      }// if на ввод смс
-    });// click 
+      } // if на ввод смс
+    }); // click
 
     // загрузка файлов , показ окна
     document.querySelector('.button.button.clip').addEventListener('click', (e) => {
       e.preventDefault();
-      console.log("загрузка фпйлов", e.target);
+      console.log('загрузка фпйлов', e.target);
       this.dropArea.classList.remove('hidden');
-    });// конец обработчика загрузки
-      //this.formInput.click();
+    }); // конец обработчика загрузки
+    // this.formInput.click();
 
     // загрузка файлов , активизация выбора и выбор
-    this.formInput.addEventListener('change', (evt) => { 
-      //evt.preventDefault();!!!  не нужно, иначе не откроется окно выбора
-
+    this.formInput.addEventListener('change', (evt) => {
+      // evt.preventDefault();!!!  не нужно, иначе не откроется окно выбора
       console.log('evt.target.files', [...evt.target.files]);
       const files = [...evt.target.files];
-      console.log("файлc  массив", files);
-        /*const file = files[0];*/
-        /*const file = evt.target.files[0];
-        console.log("файл", file);
-        if(file !== undefined) {
-          let reader = new FileReader();
-
-          reader.readAsText(file);
-          
-          reader.onload = function() {
-            console.log("reader rezult",reader.result);
-          };
-          reader.onerror = function() {
-            console.log("reader err",reader.error);
-          };
-        //const urls = URL.createObjectURL(reader.result);
+      console.log('файлc  массив', files);
+      /* c onst file = files[0]; */
+      /* const file = evt.target.files[0];
+      console.log("файл", file);
+      if(file !== undefined) {
+        let reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload = function() {
+          console.log("reader rezult",reader.result);
+        };
+        reader.onerror = function() {
+          console.log("reader err",reader.error);
+        };
+        // const urls = URL.createObjectURL(reader.result);
         const urls = URL.createObjectURL(file);
         console.log("url файлов", urls);
         */
-
-        // cmc отправить с файлом скринщота
-        let fl;
-        for (let i = 0; i < files.length; i++) {
-          // получаем сам файл
-          //file = files.item(i);
-          // или можно так
-          fl = files[i];
-          console.log("обработка файла ",i,"имя файла ", fl.name);
-          const urlFile = URL.createObjectURL(fl);
-          const img = Img.create(urlFile, fl.name);//const img = Img.create(urlFile.slice(5));
-          /*img.addEventListener('load', () => {
-            URL.revokeObjectURL(img.src);
-            });
-            */
-          console.log("create img", img);
-          //this.viewSms("message message_client",fl.name,img.dataset.type);
-          this.viewSms("message message_client",fl.name,img);
-          console.log("url этого файла", urlFile);
-        }
-        this.dropArea.classList.add('hidden');
-      });// конец обработчика выбора
-
-
-         //} ghb обработка 1-го
-                // обходит файлы используя цикл
-        /*for (let i = 0; i < files.length; i++) {
-
-          // получаем сам файл
-          file = files.item(i);
-          // или можно так
-          file = files[i];
-
-          alert(file.name);
-        }*/
-         
-      //this.formInput.dispatchEvent(new Event('click'), {bubbles: true});
-      //this.dropArea.classList.add('hidden')
-      
-    //});// конец обработчика загрузки
-    
-  }//init
-  // кнопки
-  //
+      // cmc отправить с файлом скринщота
+      let fl;
+      /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
+      for (let i = 0; i < files.length; i++) {
+        fl = files[i];
+        console.log('обработка файла ', i, 'имя файла ', fl.name);
+        const urlFile = URL.createObjectURL(fl);
+        const img = Img.create(urlFile, fl.name);
+        const exp = urlFile.slice(urlFile.length - 3);
+        console.log('create img', img);
+        console.log('расширение файла', exp);
+        // this.viewSms("message message_client",fl.name,img.dataset.type);
+        this.viewSms('message message_client', fl.name, img);
+        console.log('url этого файла', urlFile);
+      }
+      this.dropArea.classList.add('hidden');
+    }); /* конец обработчика выбора */
+  } // init
 }
