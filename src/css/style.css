@@ -324,6 +324,13 @@ footer, header {
   margin-right: 2%;
 }
 
+.overlap {
+  pointer-events: none;
+}
+
+
+
+
 .modal {
   display: flex;
   flex-direction: column;
@@ -384,4 +391,47 @@ footer, header {
 
 .hidden {
   display: none;
+}
+
+#drop-area {
+  color: inherit;
+  font-size: 0.8rem;
+  padding: 5px 5px;
+
+  /*display: flex;
+  flex-direction: column;*/
+  position: absolute;
+  top: 25%;
+  left: 16%;
+  /*margin: auto;*/
+  z-index: 1;
+  text-align: justify;
+  background-color: #184d6b;
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 65%;
+  height: 25%;
+  padding: 2%;
+}
+
+
+#fileElem{
+  color: inherit;
+  width: 65%;
+  font-size: 0.5rem;
+  padding: 1px 1px;
+}
+
+label.button {
+  color: inherit;
+  font-size: 0.8rem;
+  padding: 5px 5px;
+}
+
+.message__img {
+  border-radius: 5px;
+  max-width: 5rem;
+  min-width: 3rem;
+  /*max-width: 150px;
+  min-width: 100px;*/
 }
