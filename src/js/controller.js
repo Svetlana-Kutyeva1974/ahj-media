@@ -121,12 +121,14 @@ export default class Controller {
     e.stopPropagation();
     e.preventDefault();
     console.log(this);
+    this.dropbox.classList.add('hing');
   }
 
   dragover(e) {
     e.stopPropagation();
     e.preventDefault();
     console.log(this);
+    // this.dropbox.classList.remove('hing');
   }
 
   drop(e) {
@@ -136,6 +138,7 @@ export default class Controller {
     console.log('тянем потянем', e, e.dataTransfer);
     // let dropFiles = dt.files;
     this.handleFiles(e.dataTransfer.files);
+    this.dropbox.classList.remove('hing');
   }
 
   init() {

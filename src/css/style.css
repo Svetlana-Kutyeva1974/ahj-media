@@ -435,3 +435,6 @@ label.button {
   /*max-width: 150px;
   min-width: 100px;*/
 }
+.hing {
+  border: 7px dashed rgb(226, 225, 231);
+}
