@@ -7,5 +7,5 @@
 
 Реализовано: графический интерфейс, загрузка файлов через окно выбора или drop, ввод текста(с клавиатуры или вставкой) по enter/или по нажатию на треугольник(символ телеграмм), ссылки воспринимаются , как ссылки.
 
-# [png]([https://svetlana-kutyeva1974/ahj-media/src/img/2.png](https://github.com/Svetlana-Kutyeva1974/ahj-media/blob/main/src/img/2.png))
+# [png-screen](https://github.com/Svetlana-Kutyeva1974/ahj-media/blob/main/src/img/2.png)
 
