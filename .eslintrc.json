@@ -19,6 +19,8 @@
     */
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "strict": 0,
+        "array-callback-return": ["error", { "allowImplicit": true }],
+        "no-useless-escape": "off",
         "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
         "no-underscore-dangle": ["error", { "allowAfterThis": true }],
         "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],

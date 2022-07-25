@@ -15,6 +15,8 @@ export default class Controller {
     this.fileLoad = document.querySelector('.button.button.clip');
     this.message = 'message';
     this.item = '';
+    this.linkValid.bind(this);
+    this.urlReplacer.bind(this);
   }
 
   static getCurrentFormattedTime() {
@@ -30,17 +32,24 @@ export default class Controller {
     return `${hours}:${minutes}`;
   }
 
-  static getSmsRobot() {
-    const words = [
-      'Могу ли я Вам чем-нибудь помочь?',
-      'Благодарим за обращение в нашу компанию! ',
-      'Готовим ответ на Ваш запрос!',
-      'Все менеджеры заняты, просьба немного подождать!',
-      'Рады новой встрече с Вами!',
-      'Хорошего дня!',
-    ];
-    const index = Math.floor(Math.random() * words.length);
-    return words[index];
+  urlReplacer(st, i) {
+    const str = st.slice(i);
+    // if (i === 0) {str = st;}
+
+    /* eslint no-useless-escape: 'off' */
+
+    const match = str.match(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig);
+    // https?:\/\/\S+/ig;
+    /* eslint array-callback-return: ["error", { "allowImplicit": true }] */
+    let final = str;
+    /* eslint array-callback-return: ["error", { "allowImplicit": true }] */
+    match.map((url) => {
+    // final = final.replace(url, "<a href=\"" + st + "\" target=\"_BLANK\">" + url + '</a>');
+      final = final.replace(url, `<a href='${st}' target='_BLANK'>${url}</a>`);
+      console.log(this, 'заменяем', url, st, str, final);
+      return url;
+    });
+    return final;
   }
 
   viewSms(message, item, img = '') {
@@ -64,8 +73,23 @@ export default class Controller {
     document.querySelector(tag1).classList.remove('hidden');
   }
 
+  linkValid() {
+    const arr = this.item.split(' ');
+    console.log('имеем массив подстрок', arr);
+    for (let t = 0; t < arr.length; t++) {
+      console.log('подстрока', arr[t], arr[t].includes('https://'));
+      if (arr[t].includes('http://') === true || arr[t].includes('https://') === true) {
+        arr[t] = this.urlReplacer(arr[t], 0);
+        console.log('new dopstring', arr[t], this.item);
+      }
+    }
+    this.item = arr.join(' ');
+    console.log('new string', arr, '\n', this.item);
+  }
+
   postMessChat() {
     this.message += ' message_client';
+
     this.viewSms(this.message, this.item);
     this.item = '';
     this.message = 'message';
@@ -107,7 +131,14 @@ export default class Controller {
       console.log('расширение файла', exp);
       console.log('размер файла', fl.size);
       // this.viewSms("message message_client",fl.name,img.dataset.type);
-      this.viewSms('message message_client', fl.name, img);
+      // this.urlReplacer(urlFile.slice(5), urlFile.slice(0,4));
+      this.urlReplacer(urlFile, 5);
+      const p = this.urlReplacer(urlFile, 5);
+      console.log('cсылка ', p);
+      // this.viewSms('message message_client', fl.name, img);
+
+      this.viewSms('message message_client', `${fl.name} ${p}`, img);
+
       console.log('url этого файла', urlFile);
     }
     this.dropArea.classList.add('hidden');
@@ -146,6 +177,8 @@ export default class Controller {
     const onKey = (e) => {
       console.log(e.key, e.code);
       if (e.code === 'Enter') {
+        // this.linkValid.bind(this);
+        this.linkValid();
         this.postMessChat();
       } else {
         this.item += `${e.key}`;
@@ -163,14 +196,27 @@ export default class Controller {
 
     document.addEventListener('keydown', onKey);
     // this.input.addEventListener('keydown', onKey);
+
     this.input.addEventListener('change', (e) => {
       console.log('e.target куда клик', e.target);
       // if (e.target.closest('div').classList.contains('message__footer') ) {
       if (!e.target.classList.contains('hidden')) {
+        // this.linkValid.bind(this);
+        // this.item = this.input.value;
+        // отправка в чат
+        this.linkValid();
         this.postMessChat();
         Controller.onKeyChangeTag('[data-type=audio]', '[data-type=text]', true);
       } // if на ввод смс
     }); // click
+    // вставка текста из буфера
+    document.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const text = (e.originalEvent || e).clipboardData.getData('text/plain');
+      this.item += text;
+      console.log('вставка чего-то', text, this.item);
+      this.input.value = this.item;
+    });
 
     // загрузка файлов , показ окна
     document.querySelector('.button.button.clip').addEventListener('click', (e) => {
